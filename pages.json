@@ -1,0 +1,55 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index"
+		},{
+			"path": "pages/boke/boke"
+		},{
+			"path": "pages/mine/mine"
+		},{
+			"path": "pages/guanzhu/guanzhu"
+		},{
+			"path": "pages/shequ/shequ"
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "网易云",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	// 配置tabbar导航栏
+	"tabBar": {
+		"borderStyle": "black",
+		"selectedColor": "#389BFF",
+		"color": "#444444",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "",
+			"selectedIconPath": "",
+			"text": "发现"
+		}, {
+			"pagePath": "pages/boke/boke",
+			"iconPath": "",
+			"selectedIconPath": "",
+			"text": "博客"
+		}, {
+			"pagePath": "pages/mine/mine",
+			"iconPath": "",
+			"selectedIconPath": "",
+			"text": "我的"
+		},{
+			"pagePath": "pages/guanzhu/guanzhu",
+			"iconPath": "",
+			"selectedIconPath": "",
+			"text": "关注"
+		}, {
+			"pagePath": "pages/shequ/shequ",
+			"iconPath": "",
+			"selectedIconPath": "",
+			"text": "社区"
+		}
+		]
+	},
+	"uniIdRouter": {}
+}
