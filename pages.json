@@ -1,7 +1,7 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index"
+			"path": "pages/login/index"
 		},{
 			"path": "pages/boke/boke"
 		},{
@@ -24,7 +24,7 @@
 		"selectedColor": "#389BFF",
 		"color": "#444444",
 		"list": [{
-			"pagePath": "pages/index/index",
+			"pagePath": "pages/find/find",
 			"iconPath": "",
 			"selectedIconPath": "",
 			"text": "发现"
