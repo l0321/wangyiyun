@@ -11,7 +11,7 @@
 					<uni-easyinput type="password" v-model="formData.email" placeholder="请输入密码" />
 				</uni-forms-item>
 				<view class="register">
-					<span>注册</span>
+					<span @click="anonimousLogin">游客登录</span>
 					<span @click="qrLogin">二维码登录</span>
 				</view>
 				<button @click="submit" class="loginButton">登录</button>
@@ -29,8 +29,8 @@
 					<p class="title">请用网易云App扫码登陆</p>
 				</view>
 				<view class="register">
-					<span>注册</span>
-					<span>登录</span>
+					<span @click="anonimousLogin">游客登录</span>
+					<span @click="()=>{pageState='login'}">登录</span>
 				</view>
 			</view>
 		</view>
@@ -41,7 +41,8 @@
 
 <script>
 	import {
-		createQR
+		qrCodeApi,
+		anonimousLoginApi
 	} from '/api/index.js';
 
 	export default {
@@ -115,8 +116,7 @@
 				uni.showLoading({
 					title: '加载中'
 				});
-				let res = await createQR('qrCode')
-				console.log(res);
+				let res = await qrCodeApi('qrCode')
 				this.qrCodeData = {
 					...this?.qrCodeData,
 					qrData: res?.qrimg
@@ -124,19 +124,34 @@
 				uni.hideLoading();
 				// 设置定时器轮询当前登陆状态
 				const timer = setInterval(async () => {
-					let stateRes = await createQR('state', res?.key)
+					let stateRes = await qrCodeApi('state', res?.key)
 					this.qrCodeState = stateRes?.code;
-					console.log(stateRes)
 
 					if (stateRes?.code === 803) {
 						// 登陆成功，清除定时器，跳转首页
 						clearInterval(timer)
+						uni.setStorageSync({
+							key: 'cookie',
+							data: stateRes?.cookie,
+						});
 						uni.switchTab({
 							url: '/pages/find/find'
 						});
 					}
 				}, 1000)
 			},
+
+			// 游客登录
+			async anonimousLogin() {
+				let res = await anonimousLoginApi();
+				uni.setStorageSync({
+					key: 'cookie',
+					data: res?.cookie,
+				});
+				uni.switchTab({
+					url: '/pages/find/find'
+				});
+			}
 		},
 	}
 </script>

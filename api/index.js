@@ -3,7 +3,7 @@ import servers from './servers.js'
 const baseUrl = 'http://47.113.230.184:7749';
 
 // 获取二维码
-export async function createQR(type, key) {
+export async function qrCodeApi(type, key) {
 
 	// 生成二维码
 	if (type === 'qrCode') {
@@ -30,4 +30,9 @@ export async function createQR(type, key) {
 		return stateRes
 	}
 
+}
+
+// 游客登陆
+export async function anonimousLoginApi() {
+	return await servers(baseUrl + '/register/anonimous')
 }
