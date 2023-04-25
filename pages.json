@@ -2,14 +2,16 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/login/index"
-		},{
+		}, {
 			"path": "pages/boke/boke"
-		},{
+		}, {
 			"path": "pages/mine/mine"
-		},{
+		}, {
 			"path": "pages/guanzhu/guanzhu"
-		},{
+		}, {
 			"path": "pages/shequ/shequ"
+		}, {
+			"path": "pages/find/find"
 		}
 	],
 	"globalStyle": {
@@ -38,7 +40,7 @@
 			"iconPath": "",
 			"selectedIconPath": "",
 			"text": "我的"
-		},{
+		}, {
 			"pagePath": "pages/guanzhu/guanzhu",
 			"iconPath": "",
 			"selectedIconPath": "",
@@ -48,8 +50,7 @@
 			"iconPath": "",
 			"selectedIconPath": "",
 			"text": "社区"
-		}
-		]
+		}]
 	},
 	"uniIdRouter": {}
 }

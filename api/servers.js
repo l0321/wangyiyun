@@ -1,6 +1,7 @@
 export default function servers(url, data = {}, method = 'GET', ) {
 	return new Promise((resolve, reject) => {
 		uni.request({
+			withCredentials: true,
 			url,
 			method,
 			data,
@@ -10,6 +11,7 @@ export default function servers(url, data = {}, method = 'GET', ) {
 			fail: (err) => {
 				reject(err);
 			},
+
 		});
 	});
 }
