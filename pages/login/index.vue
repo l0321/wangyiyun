@@ -110,8 +110,18 @@
 				})
 			},
 
+			// const timer = setInterval(() => {
+			// 		console.log(1111)
+			// 	}, 1000),
+			timer() {
+				setInterval(() => {
+					console.log(1111)
+				}, 1000)
+			},
+
 			// 点击二维码登录
 			async qrLogin() {
+				timer()
 				this.pageState = 'qrCode';
 				uni.showLoading({
 					title: '加载中'
@@ -126,7 +136,6 @@
 				const timer = setInterval(async () => {
 					let stateRes = await qrCodeApi('state', res?.key)
 					this.qrCodeState = stateRes?.code;
-
 					if (stateRes?.code === 803) {
 						// 登陆成功，清除定时器，跳转首页
 						clearInterval(timer)
@@ -144,10 +153,10 @@
 			// 游客登录
 			async anonimousLogin() {
 				let res = await anonimousLoginApi();
-				uni.setStorageSync({
-					key: 'cookie',
-					data: res?.cookie,
-				});
+				uni.setStorageSync(
+					'cookie',
+					res?.cookie
+				);
 				uni.switchTab({
 					url: '/pages/find/find'
 				});

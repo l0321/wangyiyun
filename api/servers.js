@@ -4,7 +4,10 @@ export default function servers(url, data = {}, method = 'GET', ) {
 			withCredentials: true,
 			url,
 			method,
-			data,
+			data: {
+				cookie: uni.getStorageSync('cookie'),
+				...data
+			},
 			success: (res) => {
 				resolve(res.data);
 			},

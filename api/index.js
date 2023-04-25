@@ -36,3 +36,8 @@ export async function qrCodeApi(type, key) {
 export async function anonimousLoginApi() {
 	return await servers(baseUrl + '/register/anonimous')
 }
+
+// 首页推荐歌单
+export async function recommendApi() {
+	return await servers(baseUrl + '/recommend/resource')
+}
