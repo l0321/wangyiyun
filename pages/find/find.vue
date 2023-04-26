@@ -12,7 +12,7 @@
 			</view>
 			<view class="search">
 				<uni-section type="line">
-					<uni-search-bar :focus="true" @focus="focus" cancelText=' '></uni-search-bar>
+					<uni-search-bar @focus="searchFocus" cancelText=' '></uni-search-bar>
 				</uni-section>
 			</view>
 			<view class="listen">
@@ -40,6 +40,14 @@
 			},
 			closeDrawer() {
 				this.$refs.showRight.close();
+			},
+
+			// 搜索框聚焦
+			searchFocus() {
+
+				uni.navigateTo({
+					url: './search/search',
+				});
 			}
 		},
 		mounted() {

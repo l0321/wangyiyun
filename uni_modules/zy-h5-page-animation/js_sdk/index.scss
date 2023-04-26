@@ -1,0 +1,219 @@
+@keyframes page-fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes page-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes page-right-in {
+    0% {
+        opacity: 0;
+        transform: translateX(90%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes page-right-out {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(90%);
+    }
+}
+
+@keyframes page-left-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-90%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes page-left-out {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-90%);
+    }
+}
+
+@keyframes page-top-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-90%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes page-top-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-90%);
+    }
+}
+
+@keyframes page-bottom-in {
+    0% {
+        opacity: 0;
+        transform: translateY(90%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes page-bottom-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(90%);
+    }
+}
+
+@keyframes page-zoom-in {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes page-zoom-out {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.page-fade-in--in {
+    uni-page {
+        animation: page-fade-in var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-fade-in--out {
+    uni-page {
+        animation: page-fade-out var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-slide-in-right--in {
+    uni-page {
+        animation: page-right-in var(--redirect-duration, 500ms) ease;
+    }
+    &.back uni-page {
+        animation: page-left-in var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-slide-in-right--out {
+    uni-page {
+        animation: page-left-out var(--redirect-duration, 500ms) ease;
+    }
+    &.back uni-page {
+        animation: page-right-out var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-slide-in-left--in {
+    uni-page {
+        animation: page-left-in var(--redirect-duration, 500ms) ease;
+    }
+    &.back uni-page {
+        animation: page-right-in var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-slide-in-left--out {
+    uni-page {
+        animation: page-right-out var(--redirect-duration, 500ms) ease;
+    }
+    &.back uni-page {
+        animation: page-left-out var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-slide-in-top--in {
+    uni-page {
+        animation: page-top-in var(--redirect-duration, 500ms) ease;
+    }
+    &.back uni-page {
+        animation: page-bottom-in var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-slide-in-top--out {
+    uni-page {
+        animation: page-bottom-out var(--redirect-duration, 500ms) ease;
+    }
+    &.back uni-page {
+        animation: page-top-out var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-slide-in-bottom--in {
+    uni-page {
+        animation: page-bottom-in var(--redirect-duration, 500ms) ease;
+    }
+    &.back uni-page {
+        animation: page-top-in var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-slide-in-bottom--out {
+    uni-page {
+        animation: page-top-out var(--redirect-duration, 500ms) ease;
+    }
+    &.back uni-page {
+        animation: page-bottom-out var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-zoom-out--in {
+    uni-page {
+        animation: page-zoom-in var(--redirect-duration, 500ms) ease;
+    }
+}
+
+.page-zoom-out--out {
+    uni-page {
+        animation: page-zoom-out var(--redirect-duration, 500ms) ease;
+    }
+}

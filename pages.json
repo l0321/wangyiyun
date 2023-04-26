@@ -12,6 +12,8 @@
 			"path": "pages/shequ/shequ"
 		}, {
 			"path": "pages/find/find"
+		}, {
+			"path": "pages/find/search/search"
 		}
 	],
 	"globalStyle": {
