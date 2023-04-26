@@ -41,3 +41,12 @@ export async function anonimousLoginApi() {
 export async function recommendApi() {
 	return await servers(baseUrl + '/recommend/resource')
 }
+
+// 每日推荐歌曲
+export async function recommendSongsApi() {
+	return await servers(baseUrl + '/recommend/songs')
+}
+
+export async function albumListApi() {
+	return await servers(baseUrl + '/album/list')
+}
