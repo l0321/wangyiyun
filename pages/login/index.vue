@@ -44,6 +44,11 @@
 		qrCodeApi,
 		anonimousLoginApi
 	} from '/api/index.js';
+	import {
+		onUnmounted
+	} from 'vue'
+
+
 
 	export default {
 		data() {
@@ -85,9 +90,13 @@
 				// 当前页面处于什么状态
 				// login - 登录   register - 注册   qrCode - 二维码登录
 				pageState: 'login',
+
 				// 当前二维码登录处于什么状态
 				// 800 为二维码过期,801 为等待扫码,802 为待确认,803 为授权登录成功(803 状态码下会返回 cookies)
-				qrCodeState: null
+				qrCodeState: null,
+
+				// 定时器变量
+				timer: null,
 			}
 		},
 		methods: {
@@ -110,18 +119,8 @@
 				})
 			},
 
-			// const timer = setInterval(() => {
-			// 		console.log(1111)
-			// 	}, 1000),
-			timer() {
-				setInterval(() => {
-					console.log(1111)
-				}, 1000)
-			},
-
 			// 点击二维码登录
 			async qrLogin() {
-				timer()
 				this.pageState = 'qrCode';
 				uni.showLoading({
 					title: '加载中'
@@ -133,18 +132,24 @@
 				}
 				uni.hideLoading();
 				// 设置定时器轮询当前登陆状态
-				const timer = setInterval(async () => {
+				// 设置定时器轮询当前登陆状态
+				this.timer = setInterval(async () => {
 					let stateRes = await qrCodeApi('state', res?.key)
 					this.qrCodeState = stateRes?.code;
+					console.log(stateRes)
 					if (stateRes?.code === 803) {
 						// 登陆成功，清除定时器，跳转首页
-						clearInterval(timer)
+						clearInterval(this.timer)
 						uni.setStorageSync({
 							key: 'cookie',
 							data: stateRes?.cookie,
 						});
 						uni.switchTab({
-							url: '/pages/find/find'
+							url: '/pages/find/find',
+							complete: () => {
+								// 页面调换，清除定时器
+								clearInterval(this.timer)
+							}
 						});
 					}
 				}, 1000)
@@ -158,9 +163,17 @@
 					res?.cookie
 				);
 				uni.switchTab({
-					url: '/pages/find/find'
+					url: '/pages/find/find',
+					complete: () => {
+						// 页面调换，清除定时器
+						clearInterval(this.timer)
+					}
 				});
-			}
+			},
+
+
+
+
 		},
 	}
 </script>
